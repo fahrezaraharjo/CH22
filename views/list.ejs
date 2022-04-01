@@ -4,6 +4,8 @@
 
     <title>Learn BREAD</title>
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
     <link href="/fontawesome/css/all.css" rel="stylesheet">
 </head>
 
@@ -49,12 +51,14 @@
             </div>
 
             <div class="mb-3 row">
-                <label for="date"  class="col-md col-form-label">Date</label>
+                <label for="date" class="col-md col-form-label">Date</label>
                 <div class="col-md-10
                 ">
-                    <input type="date" class="form-control" id="date" name="startdate" value="<%= moment(data.datedata).format('YYYY-MM-DD') %>">
+                    <input type="date" class="form-control" id="date" name="startdate"
+                        value="<%= moment(data.datedata).format('YYYY-MM-DD') %>">
                     <h2 style="font-size: small;">To</h2>
-                    <input type="date" class="form-control" id="date" name="enddate" value="<%= moment(data.datedata).format('YYYY-MM-DD') %>">
+                    <input type="date" class="form-control" id="date" name="enddate"
+                        value="<%= moment(data.datedata).format('YYYY-MM-DD') %>">
                 </div>
             </div>
 
@@ -80,29 +84,29 @@
 </form>
 <tr>
     <th><a
-    href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=id`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
-        class="fa-solid <%= query.sortBy == 'id' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
-    Id</a></th>
+            href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=id`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+                class="fa-solid <%= query.sortBy == 'id' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+            Id</a></th>
     <th><a
-        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=stringdata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
-            class="fa-solid <%= query.sortBy == 'stringdata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
-        String</a></th>
+            href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=stringdata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+                class="fa-solid <%= query.sortBy == 'stringdata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+            String</a></th>
     <th><a
-        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=integerdata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
-            class="fa-solid <%= query.sortBy == 'integerdata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
-        Integer</a></th>
+            href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=integerdata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+                class="fa-solid <%= query.sortBy == 'integerdata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+            Integer</a></th>
     <th><a
-        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=floatdata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
-            class="fa-solid <%= query.sortBy == 'floatdata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
-        Float</a></th>
+            href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=floatdata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+                class="fa-solid <%= query.sortBy == 'floatdata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+            Float</a></th>
     <th><a
-        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=datedata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
-            class="fa-solid <%= query.sortBy == 'datedata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
-        Date</a></th>
+            href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=datedata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+                class="fa-solid <%= query.sortBy == 'datedata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+            Date</a></th>
     <th><a
-        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=booleandata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
-            class="fa-solid <%= query.sortBy == 'booleandata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
-        Boolean</a></th>
+            href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=booleandata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+                class="fa-solid <%= query.sortBy == 'booleandata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+            Boolean</a></th>
     <th>Actions</th>
 </tr>
 </thead>
@@ -158,7 +162,111 @@
                 </li>
     </ul>
 </nav>
+<div class="modal-body">
+    <div class="card my-modal">
+        <form id="form-edit">
+            <input type="hidden" id="id" value="">
+            <div class="card-header">
+                <h1>Form Edit</h1>
+            </div>
+            <div class="card-body">
+                <div class="mb-3 row">
+                    <label for="title" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="title" value="">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="description"></textarea>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="price" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="price" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-warning tombol-close">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
 <a href="/add" class="btn btn-primary"><i class="fa-solid fa-plus"></i></i></a>
+<script>
+    $(document).ready(function () {
+        const table = $('#example').DataTable({
+            "lengthMenu": [[1, 2, 3, -1], [1, 2, 3, "All"]],//ini apa
+            "processing": true,
+            "serverSide": true,
+            "ajax": "/ads/data",// ini
+            "columns": [
+                { data: "title" },
+                { data: "price" },
+                { data: "approved" },
+                {
+                    data: "pictures",
+                    orderable: false,
+                    render: function (data, type) {
+                        return `<img src="/images/ads/${data[0]}" alt="gambar produk" width="100" />`
+                    }
+                },
+                {
+                    data: "id",
+                    orderable: false,
+                    render: function (data, type) {
+                        return `
+                        <button type="button" dataid="${data}" class="btn btn-success btn-edit"><i class="fa-solid fa-pencil"></i></button>
+                        <button type="button" dataid="${data}" class="btn btn-danger btn-delete"><i class="fa-solid fa-trash"></i></button>
+                        `
+                    }
+                }
+            ]
+        });
+        $('#example').on('click', '.btn-edit', function () {
+            const id = $(this).attr('dataid')//ini this apa
+            $.get(`/ads/data/${id}`, function (data) {
+                $('#id').val(data.id)
+                $('#title').val(data.title)
+                $('#description').val(data.description)
+                $('#price').val(data.price)
+                $('.modal-body').css('display', 'flex')
+            })
+        })
+        $('#example').on('click', '.btn-delete', function () {
+            const id = $(this).attr('dataid')
+            $.ajax({
+                url: `/ads/data/${id}`,
+                method: "DELETE",
+                dataType: "json"
+            }).done(function (data) {
+                console.log(data)
+                table.ajax.reload();
+            }).fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
+            
+        })
+        $('.tombol-close').click(function () {
+            $('.modal-body').css('display', 'none')
+        })
+        $('#form-edit').submit(function (e) {
+            e.preventDefault()
+            const id = $('#id').val()
+            const title = $('#title').val()
+            const description = $('#description').val()
+            const price = $('#price').val()
+            $.post(`/ads/data/${id}`, { title, description, price }, function (data) {
+                table.ajax.reload();
+                $('.modal-body').css('display', 'none')
+            })
+        })
+    });
+</script>
 </body>
 
 </html>
