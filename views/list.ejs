@@ -5,7 +5,6 @@
     <title>Learn BREAD</title>
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" href="style.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
     <link href="/fontawesome/css/all.css" rel="stylesheet">
 </head>
 
@@ -167,25 +166,43 @@
         <form id="form-edit">
             <input type="hidden" id="id" value="">
             <div class="card-header">
-                <h1>Form Edit</h1>
+                <h1>Form edit</h1>
             </div>
             <div class="card-body">
                 <div class="mb-3 row">
-                    <label for="title" class="col-sm-2 col-form-label">Title</label>
+                    <label for="id" class="col-sm-2 col-form-label">Title</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="title" value="">
+                        <input type="text" class="form-control" id="id" value="">
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                    <label for="string" class="col-sm-2 col-form-label">Description</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="description"></textarea>
+                        <textarea class="form-control" id="string"></textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="price" class="col-sm-2 col-form-label">Price</label>
+                    <label for="integer" class="col-sm-2 col-form-label">Price</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="price" value="">
+                        <input type="number" class="form-control" id="integer" value="">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="float" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="float" value="">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="date" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="date" value="">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="boolean" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="boolean" value="">
                     </div>
                 </div>
             </div>
@@ -196,6 +213,7 @@
         </form>
     </div>
 </div>
+
 <a href="/add" class="btn btn-primary"><i class="fa-solid fa-plus"></i></i></a>
 <script>
     $(document).ready(function () {
@@ -205,16 +223,15 @@
             "serverSide": true,
             "ajax": "/ads/data",// ini
             "columns": [
-                { data: "title" },
-                { data: "price" },
-                { data: "approved" },
-                {
-                    data: "pictures",
-                    orderable: false,
-                    render: function (data, type) {
-                        return `<img src="/images/ads/${data[0]}" alt="gambar produk" width="100" />`
-                    }
-                },
+                { data: "id" },
+                { data: "string" },
+                { data: "integer" },
+                { data: "float" },
+                { data: "date" },
+                { data: "boolean" },
+
+               
+                
                 {
                     data: "id",
                     orderable: false,
@@ -231,9 +248,11 @@
             const id = $(this).attr('dataid')//ini this apa
             $.get(`/ads/data/${id}`, function (data) {
                 $('#id').val(data.id)
-                $('#title').val(data.title)
-                $('#description').val(data.description)
-                $('#price').val(data.price)
+                $('#string').val(data.string)
+                $('#integer').val(data.integer)
+                $('#float').val(data.float)
+                $('#date').val(data.date)
+                $('#boolean').val(data.boolean)
                 $('.modal-body').css('display', 'flex')
             })
         })
@@ -257,10 +276,12 @@
         $('#form-edit').submit(function (e) {
             e.preventDefault()
             const id = $('#id').val()
-            const title = $('#title').val()
-            const description = $('#description').val()
-            const price = $('#price').val()
-            $.post(`/ads/data/${id}`, { title, description, price }, function (data) {
+            const string = $('#string').val()
+            const integer = $('#integer').val()
+            const float = $('#float').val()
+            const date = $('#date').val()
+            const boolean = $('#boolean').val()
+            $.post(`/ads/data/${id}`, { id, string, integer, float, date, boolean }, function (data) {
                 table.ajax.reload();
                 $('.modal-body').css('display', 'none')
             })
